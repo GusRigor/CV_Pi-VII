@@ -25,5 +25,6 @@ class counter:
             self.timer.setToc()
 
     def saveData(self):
-        r = request(self.productCondition)
-        r.post(self.getCount())
+        if self.getCount() > 0:
+            r = request(self.productCondition)
+            r.post(self.getCount())

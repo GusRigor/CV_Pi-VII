@@ -4,7 +4,7 @@ from colors import hsv
 from counter import counter
 import cv2
 
-ContadorVerde = counter()
+ContadorVerde = counter("IN_PROGRESS")
 ContadorAmarelo = counter()
 
 cap = cv2.VideoCapture(0)
@@ -36,3 +36,8 @@ while True:
         
 cap.release()
 cv2.destroyAllWindows()
+
+print("Salvando registros...")
+ContadorAmarelo.saveData()
+ContadorVerde.saveData()
+print("Encerrando o programa.")

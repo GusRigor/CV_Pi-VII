@@ -27,4 +27,4 @@ class counter:
     def saveData(self):
         if self.getCount() > 0:
             r = request(self.productCondition)
-            r.post(self.getCount())
+            r.post_async(self.getCount())

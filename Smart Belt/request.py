@@ -1,4 +1,5 @@
 import requests
+import threading
 
 class request:
     def __init__(self, productCondition = "OK"):
@@ -14,3 +15,8 @@ class request:
             "productCondition": self.productCondition
         }
         )
+
+    def post_async(self, quantity):
+        t = threading.Thread(target=self.post, args = (quantity))
+        t.daemon = True
+        t.start()

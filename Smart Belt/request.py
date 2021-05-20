@@ -17,6 +17,6 @@ class request:
         )
 
     def post_async(self, quantity):
-        t = threading.Thread(target=self.post, args = (quantity))
+        t = threading.Thread(target=self.post, args = (quantity,))
         t.daemon = True
         t.start()

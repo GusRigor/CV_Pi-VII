@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from servo import servo
 
 width = 0
 height = 0
@@ -13,6 +14,7 @@ def TestaInterseccao(y, CoordenadaYLinha):
         return False
 
 def Videotracking(frame, hsv, tictoc, contador, verde = True):
+    servo1 = servo()
     tictoc.setTic()
 
     height = np.size(frame,0)
@@ -75,6 +77,7 @@ def Videotracking(frame, hsv, tictoc, contador, verde = True):
             if (TestaInterseccao(CoordenadaYCentroContorno,CoordenadaYLinha)):
                 if tictoc.canScore(): 
                     contador.addCount()
+                    servo1.to45()
                     tictoc.setToc()
 
         else:
@@ -84,6 +87,7 @@ def Videotracking(frame, hsv, tictoc, contador, verde = True):
             if (TestaInterseccao(CoordenadaYCentroContorno,CoordenadaYLinha)):
                 if tictoc.canScore():
                     contador.addCount()
+                    servo1.to0()
                     tictoc.setToc()
-    
+    servo1.stop()
     return frame, gray, contador

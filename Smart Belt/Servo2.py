@@ -10,24 +10,23 @@ GPIO.setup(11,GPIO.OUT)
 servo1 = GPIO.PWM(11,50) # Note 11 is pin, 50 = 50Hz pulse
 
 #start PWM running, but with value of 0 (pulse off)
-servo1.start(0)
+servo1.start(5)
 print ("Waiting for 2 seconds")
 time.sleep(2)
-servo1.stop()
+input()
 
 # Turn back to 90 degrees
-print ("Turning back to 90 degrees for 2 seconds")
-servo1.start(0)
-servo1.ChangeDutyCycle(7)
+print ("Turning back to 50 degrees for 2 seconds")
+servo1.ChangeDutyCycle(5)
 time.sleep(2)
-servo1.stop()
+input()
 
-servo1.start(0)
 #turn back to 0 degrees
 print ("Turning back to 0 degrees")
 servo1.ChangeDutyCycle(2)
 time.sleep(0.5)
 servo1.ChangeDutyCycle(0)
+input()
 
 #Clean things up at the end
 servo1.stop()
